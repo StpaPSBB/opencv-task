@@ -35,6 +35,9 @@ def analyze_number(working_image: str, working_color: str) -> str|None:
         print("Неверное название цвета.")
         return
 
+    cv2.imwrite(f"output_colors/{splitted_filename}/blur.png", blur)
+    cv2.imwrite(f"output_colors/{splitted_filename}/binary.png", binary)
+
     reader = easyocr.Reader(['en'], gpu=False)
     results = reader.readtext(binary, allowlist='0123456789')
 
